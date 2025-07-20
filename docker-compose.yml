@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+
+  database:
+    image: mariadb:10.7
+    container_name: ${ENVIRONMENT_NAME}_db
+    volumes:
+      - ./data/database:/var/lib/mysql
+      - ./config/database/db.conf.cnf:/etc/mysql/conf.d/db.conf.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
